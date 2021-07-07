@@ -36,7 +36,7 @@ def add(DomainName, RR, Type, Value):  # 添加新的域名解析记录
     request.set_DomainName(DomainName)
     request.set_RR(RR)  # https://blog.zeruns.tech
     request.set_Type(Type)
-    request.set_Value(Value)
+    request.set_Value(Value)    
     response = client.do_action_with_exception(request)
 
 
@@ -67,6 +67,7 @@ if ipv4_flag == 1:
         request.set_accept_format('json')
         request.set_DomainName(domain)  # https://blog.zeruns.tech
         request.set_RR(name_ipv4)
+        request.set_Type("A") 
         response = client.do_action_with_exception(request)
         add(domain, name_ipv4, "A", ipv4)
         print("修改域名解析成功")
@@ -100,6 +101,7 @@ if ipv6_flag == 1:
         request.set_accept_format('json')
         request.set_DomainName(domain)
         request.set_RR(name_ipv6)  # https://blog.zeruns.tech
+        request.set_Type("AAAA") 
         response = client.do_action_with_exception(request)
         add(domain, name_ipv6, "AAAA", ipv6)
         print("修改域名解析成功")
