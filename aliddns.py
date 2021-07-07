@@ -45,6 +45,7 @@ if ipv4_flag == 1:
     request.set_accept_format('json')
     request.set_DomainName(domain)
     request.set_SubDomain(name_ipv4 + '.' + domain)
+    request.set_Type("A")
     response = client.do_action_with_exception(request)  # 获取域名解析记录列表
     domain_list = json.loads(response)  # 将返回的JSON数据转化为Python能识别的
 
@@ -79,6 +80,7 @@ if ipv6_flag == 1:
     request.set_accept_format('json')
     request.set_DomainName(domain)
     request.set_SubDomain(name_ipv6 + '.' + domain)
+    request.set_Type("AAAA")
     response = client.do_action_with_exception(request)  # 获取域名解析记录列表
     domain_list = json.loads(response)  # 将返回的JSON数据转化为Python能识别的
 
